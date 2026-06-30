@@ -1,0 +1,1 @@
+# Persian-Text-Embedding-Comparison-TFIDF-Word2Vec-Gemma
