@@ -52,3 +52,7 @@ gemma_embeddings = []
 for i in range(sample_size):
     emb = get_gemma_embedding(texts[i])
     gemma_embeddings.append(emb)
+
+gemma_matrix = np.zeros((len(texts), len(gemma_embeddings[0])))
+for i in range(sample_size):
+    gemma_matrix[i, :len(gemma_embeddings[i])] = gemma_embeddings[i]
