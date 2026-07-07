@@ -27,3 +27,15 @@ vectorizer = TfidfVectorizer(tokenizer=preprocess, max_features=100)
 tfidf_matrix = vectorizer.fit_transform(texts).toarray()
 
 w2v_model = Word2Vec(sentences=tokenized_texts, vector_size=100, window=5, min_count=1, workers=4)
+
+def text_to_w2v(tokens):
+    vectors = [w2v_model.wv[word] for word in tokens if word in w2v_model.wv]
+    if len(vectors) == 0:
+        return np.zeros(100)
+    return np.mean(vectors, axis=0)
+
+w2v_matrix = np.array([text_to_w2v(t) for t in tokenized_texts])
+
+model_name = "google/gemma-2b"
+tokenizer = AutoTokenizer.from_pretrained(model_name)
+model = AutoModel.from_pretrained(model_name)
