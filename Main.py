@@ -15,3 +15,15 @@ with open('data/persian_texts.txt', 'r', encoding='utf-8') as f:
     texts = [line.strip() for line in f if line.strip()]
 
 stopwords = set(stopwords_list())
+
+def preprocess(text):
+    tokens = word_tokenize(text)
+    tokens = [t for t in tokens if t.isalpha() and t not in stopwords]
+    return tokens
+
+tokenized_texts = [preprocess(t) for t in texts]
+
+vectorizer = TfidfVectorizer(tokenizer=preprocess, max_features=100)
+tfidf_matrix = vectorizer.fit_transform(texts).toarray()
+
+w2v_model = Word2Vec(sentences=tokenized_texts, vector_size=100, window=5, min_count=1, workers=4)
