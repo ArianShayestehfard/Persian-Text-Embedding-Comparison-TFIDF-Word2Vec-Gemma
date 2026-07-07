@@ -39,3 +39,10 @@ w2v_matrix = np.array([text_to_w2v(t) for t in tokenized_texts])
 model_name = "google/gemma-2b"
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 model = AutoModel.from_pretrained(model_name)
+
+def get_gemma_embedding(text):
+    inputs = tokenizer(text, return_tensors="pt", truncation=True, padding=True, max_length=512)
+    with torch.no_grad():
+        outputs = model(**inputs)
+    emb = outputs.last_hidden_state.mean(dim=1).squeeze().numpy()
+    return emb
