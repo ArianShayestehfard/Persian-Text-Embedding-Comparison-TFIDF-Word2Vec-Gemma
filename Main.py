@@ -8,3 +8,10 @@ import torch
 from sklearn.decomposition import TruncatedSVD
 from sklearn.metrics.pairwise import cosine_similarity
 import warnings
+
+warnings.filterwarnings('ignore')
+
+with open('data/persian_texts.txt', 'r', encoding='utf-8') as f:
+    texts = [line.strip() for line in f if line.strip()]
+
+stopwords = set(stopwords_list())
