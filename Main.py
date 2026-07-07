@@ -46,3 +46,9 @@ def get_gemma_embedding(text):
         outputs = model(**inputs)
     emb = outputs.last_hidden_state.mean(dim=1).squeeze().numpy()
     return emb
+
+sample_size = min(5, len(texts))
+gemma_embeddings = []
+for i in range(sample_size):
+    emb = get_gemma_embedding(texts[i])
+    gemma_embeddings.append(emb)
