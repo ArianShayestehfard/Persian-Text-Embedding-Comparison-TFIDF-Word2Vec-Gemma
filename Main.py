@@ -93,3 +93,16 @@ def avg_similarity(sim_matrix):
     mask = ~np.eye(n, dtype=bool)
     return np.mean(sim_matrix[mask])
 
+print("\nComparison of Methods:")
+comparison_data = []
+for name, sim_mat in similarity_results.items():
+    avg_sim = avg_similarity(sim_mat)
+    std_sim = np.std(sim_mat[~np.eye(sim_mat.shape[0], dtype=bool)])
+    diversity = np.max(sim_mat) - np.min(sim_mat)
+    comparison_data.append({
+        'Method': name,
+        'Avg Similarity': avg_sim,
+        'Std Dev': std_sim,
+        'Range': diversity
+    })
+
