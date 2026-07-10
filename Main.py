@@ -63,3 +63,6 @@ combined_matrix = np.hstack([
     gemma_matrix[:, :100]
 ])
 
+n_components = min(50, combined_matrix.shape[1] - 1)
+svd = TruncatedSVD(n_components=n_components, random_state=42)
+reduced_matrix = svd.fit_transform(combined_matrix)
