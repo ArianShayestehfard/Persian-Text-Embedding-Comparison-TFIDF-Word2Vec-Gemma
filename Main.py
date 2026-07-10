@@ -72,3 +72,9 @@ pd.DataFrame(reduced_matrix).to_csv('output/reduced_matrix_svd.csv', index=False
 
 num_sentences = min(5, len(texts))
 selected_texts = texts[:num_sentences]
+
+methods = {
+    'TF-IDF': tfidf_matrix[:num_sentences],
+    'Word2Vec': w2v_matrix[:num_sentences],
+    'Gemma': gemma_matrix[:num_sentences]
+}
