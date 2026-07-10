@@ -66,3 +66,9 @@ combined_matrix = np.hstack([
 n_components = min(50, combined_matrix.shape[1] - 1)
 svd = TruncatedSVD(n_components=n_components, random_state=42)
 reduced_matrix = svd.fit_transform(combined_matrix)
+
+np.save('output/reduced_matrix_svd.npy', reduced_matrix)
+pd.DataFrame(reduced_matrix).to_csv('output/reduced_matrix_svd.csv', index=False)
+
+num_sentences = min(5, len(texts))
+selected_texts = texts[:num_sentences]
