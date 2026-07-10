@@ -88,4 +88,8 @@ for name, matrix in methods.items():
                        index=[f"S{i+1}" for i in range(num_sentences)],
                        columns=[f"S{i+1}" for i in range(num_sentences)]).round(3))
 
+def avg_similarity(sim_matrix):
+    n = sim_matrix.shape[0]
+    mask = ~np.eye(n, dtype=bool)
+    return np.mean(sim_matrix[mask])
 
