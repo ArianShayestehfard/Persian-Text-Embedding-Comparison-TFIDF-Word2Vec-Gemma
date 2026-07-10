@@ -56,3 +56,10 @@ for i in range(sample_size):
 gemma_matrix = np.zeros((len(texts), len(gemma_embeddings[0])))
 for i in range(sample_size):
     gemma_matrix[i, :len(gemma_embeddings[i])] = gemma_embeddings[i]
+
+combined_matrix = np.hstack([
+    tfidf_matrix,
+    w2v_matrix,
+    gemma_matrix[:, :100]
+])
+
