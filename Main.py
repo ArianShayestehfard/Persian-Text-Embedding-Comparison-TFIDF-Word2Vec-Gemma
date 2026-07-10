@@ -78,3 +78,14 @@ methods = {
     'Word2Vec': w2v_matrix[:num_sentences],
     'Gemma': gemma_matrix[:num_sentences]
 }
+
+similarity_results = {}
+for name, matrix in methods.items():
+    sim_matrix = cosine_similarity(matrix)
+    similarity_results[name] = sim_matrix
+    print(f"\n{name} Similarity Matrix:")
+    print(pd.DataFrame(sim_matrix,
+                       index=[f"S{i+1}" for i in range(num_sentences)],
+                       columns=[f"S{i+1}" for i in range(num_sentences)]).round(3))
+
+
