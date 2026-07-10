@@ -106,3 +106,6 @@ for name, sim_mat in similarity_results.items():
         'Range': diversity
     })
 
+    comparison_df = pd.DataFrame(comparison_data)
+print(comparison_df.to_string(index=False))
+
