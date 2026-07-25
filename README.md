@@ -369,23 +369,6 @@ The main limitations include:
 
 ---
 
-## Future Work
-
-Potential extensions include:
-
-* Using a larger Persian corpus for Word2Vec training.
-* Evaluating Persian-specific pretrained language models.
-* Using a labeled semantic similarity benchmark.
-* Comparing additional embedding methods.
-* Performing systematic hyperparameter optimization.
-* Comparing SVD with PCA and other dimensionality reduction techniques.
-* Adding automated experiment configuration.
-* Adding automated tests.
-* Adding quantitative evaluation against human similarity judgments.
-* Improving reproducibility through pinned dependency versions and experiment metadata.
-
----
-
 ## Technologies
 
 * Python
@@ -421,8 +404,6 @@ The project connects these mathematical concepts with practical text representat
 
 ## References
 
-* Salton, G., & Buckley, C. — Term-weighting approaches in automatic text retrieval.
-* Mikolov, T. et al. — Efficient Estimation of Word Representations in Vector Space.
 * Gemma Team — Gemma: Open Models Based on Gemini Research and Technology.
 * Hazm — Persian Natural Language Processing Toolkit.
 * Scikit-learn — Machine Learning and Scientific Computing Tools for Python.
